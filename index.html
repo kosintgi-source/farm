@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ลำพญาฟีดส์ | อาหารโคนมคุณภาพสูง ผลิตโดย บริษัท ฟาร์มลำพญา จำกัด</title>
+  <meta name="description" content="ลำพญาฟีดส์ ผลิตและจำหน่ายอาหารโคนมคุณภาพสูง ลำพญา 816 (โปรตีน 16%) และลำพญาพลัส (โปรตีน 18%) สำหรับโคระยะอุ้มท้องและให้นม พร้อมบริการหลังการขาย บริการวิชาการ และบริการผสมเทียม อ.มวกเหล็ก จ.สระบุรี โทร 081-976-9810">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ลำพญาฟีดส์ | อาหารโคนมคุณภาพสูง">
+  <meta property="og:description" content="อาหารโคนมจากโรงงานในมวกเหล็ก พร้อมทีมดูแลหลังการขาย บริการวิชาการ และผสมเทียม">
+  <meta property="og:image" content="images/hero-warehouse.jpg">
+  <meta name="theme-color" content="#14284B">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500;600;700&amp;family=IBM+Plex+Sans+Thai:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "ลำพญาฟีดส์ (บริษัท ฟาร์มลำพญา จำกัด)",
+    "alternateName": "Lamphaya Feeds",
+    "description": "ผลิตและจำหน่ายอาหารโคนมคุณภาพสูง พร้อมบริการหลังการขาย บริการวิชาการ และบริการผสมเทียม",
+    "telephone": ["+66819769810", "+66980986933"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "190 หมู่ 13 ถนนปากช่อง-ลำสมพุง",
+      "addressLocality": "ตำบลลำพญากลาง อำเภอมวกเหล็ก",
+      "addressRegion": "สระบุรี",
+      "postalCode": "30130",
+      "addressCountry": "TH"
+    }
+  }
+  </script>
+  <style>
+    /* =========================================================
+       Design tokens
+       ========================================================= */
+    :root{
+      /* color: taken from the Lamphaya Feeds sack */
+      --navy:#14284B; --navy-2:#1C3866; --navy-3:#0E1D38;
+      --blue:#2457A6; --red:#C62A2F; --red-dark:#A82228;
+      --sack:#F2F4F6; --milk:#FFFFFF; --ink:#16203A; --muted:#505B74; --line:#DCE1EA;
+      --on-navy:#D5DEEE; --on-navy-2:#AFC0DD;
+
+      /* type: one fluid scale (ratio ~1.25), tuned for Thai script */
+      --font-display:'Kanit',system-ui,sans-serif;
+      --font-body:'IBM Plex Sans Thai',system-ui,sans-serif;
+      --fs-xs:clamp(14px,.84rem + .08vw,15px);
+      --fs-sm:clamp(15px,.9rem + .15vw,16.5px);
+      --fs-base:clamp(17px,1rem + .2vw,18.5px);
+      --fs-lead:clamp(18px,1.04rem + .45vw,21px);
+      --fs-h4:clamp(19px,1.08rem + .45vw,22px);
+      --fs-h3:clamp(23px,1.2rem + .95vw,31px);
+      --fs-h2:clamp(29px,1.45rem + 2vw,46px);
+      --fs-h1:clamp(35px,1.6rem + 3.2vw,62px);
+      --fs-num:clamp(22px,1.15rem + .9vw,30px);
+      --lh-body:1.78; --lh-lead:1.72; --lh-head:1.28;
+
+      /* space & shape */
+      --gutter:clamp(18px,4vw,48px);
+      --section:clamp(64px,4.6rem + 3.2vw,124px);
+      --gap:clamp(18px,2.4vw,32px);
+      --r-sm:6px; --r:10px; --r-lg:14px;
+      --shadow:0 24px 48px -28px #14284B66;
+      --header-h:80px;
+      --container:1200px;
+    }
+    @media(min-width:1600px){:root{--container:1280px}}
+
+    /* =========================================================
+       Base
+       ========================================================= */
+    *,*:before,*:after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 8px);-webkit-text-size-adjust:100%}
+    body{margin:0;overflow-x:hidden;font-family:var(--font-body);font-size:var(--fs-base);line-height:var(--lh-body);color:var(--ink);background:var(--milk);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img{max-width:100%;height:auto;display:block}
+    h1,h2,h3,h4,p{margin:0}
+    h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;line-height:var(--lh-head);text-wrap:balance}
+    h1{font-size:var(--fs-h1);line-height:1.16}
+    h2{font-size:var(--fs-h2)}
+    h3{font-size:var(--fs-h3)}
+    p,li{text-wrap:pretty}
+    a{color:var(--blue)}
+    button{font:inherit}
+    :focus-visible{outline:3px solid #F2B705;outline-offset:3px}
+    .skip{position:absolute;left:-9999px;top:0;background:#F2B705;color:var(--ink);padding:10px 16px;z-index:100}
+    .skip:focus{left:12px;top:12px}
+    .nb{white-space:nowrap}
+    .shell{width:min(var(--container),100%);margin-inline:auto}
+    .pad{padding-inline:var(--gutter)}
+    .section{padding-block:var(--section)}
+    .lede{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted);max-width:60ch}
+    .section-head{display:grid;gap:14px;margin-bottom:clamp(32px,4vw,52px);max-width:780px}
+    .section-head h2{color:var(--navy)}
+
+    /* sack stripe: the blue band printed across the feed bag */
+    .stripe{height:14px;background:linear-gradient(var(--blue),var(--blue)) 0 0/100% 9px no-repeat,linear-gradient(var(--milk),var(--milk)) 0 9px/100% 2px no-repeat,linear-gradient(var(--blue),var(--blue)) 0 11px/100% 3px no-repeat}
+
+    /* =========================================================
+       Buttons
+       ========================================================= */
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:12px 26px;border-radius:var(--r-sm);font-family:var(--font-body);font-weight:600;font-size:var(--fs-base);line-height:1.25;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:background .2s,color .2s,border-color .2s,box-shadow .2s}
+    .btn svg{width:20px;height:20px;flex:none}
+    .btn-red{background:var(--red);color:#fff}
+    .btn-red:hover{background:var(--red-dark)}
+    .btn-ghost{border-color:#ffffff80;color:#fff;background:transparent}
+    .btn-ghost:hover{background:#ffffff14;border-color:#fff}
+    .btn-navy{background:var(--navy);color:#fff}
+    .btn-navy:hover{background:var(--navy-2)}
+    .btn-outline{background:#fff;border-color:var(--navy);color:var(--navy)}
+    .btn-outline:hover{background:var(--navy);color:#fff}
+    .btn-line{background:#06C755;color:#fff}
+    .btn-line:hover{background:#05A948}
+    .btn-fb{background:#1877F2;color:#fff}
+    .btn-fb:hover{background:#0F63D1}
+    .btn-light{background:#ffffff14;border-color:#ffffff40;color:#fff}
+    .btn-light:hover{background:#ffffff26}
+    .btn-sm{min-height:44px;padding:8px 16px;font-size:var(--fs-sm)}
+
+    /* =========================================================
+       Header
+       ========================================================= */
+    .site-header{position:sticky;top:0;z-index:50;background:#ffffffF2;backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+    .site-header.is-scrolled{box-shadow:0 8px 24px -16px #14284B55}
+    .nav-inner{display:flex;align-items:center;gap:clamp(14px,2vw,28px);min-height:var(--header-h)}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--navy);min-width:0;flex:0 1 auto}
+    .brand img{width:52px;height:52px;flex:none}
+    .brand-text{min-width:0}
+    .brand-name{display:block;font-family:var(--font-display);font-weight:700;font-size:clamp(20px,1.1rem + .4vw,24px);line-height:1.15}
+    .brand-sub{display:block;font-size:var(--fs-xs);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .nav-links{display:flex;gap:4px clamp(16px,1.8vw,26px);margin-left:auto}
+    .nav-links a{color:var(--ink);text-decoration:none;font-size:var(--fs-sm);font-weight:500;padding:8px 0;border-bottom:2px solid transparent;white-space:nowrap}
+    .nav-links a:hover,.nav-links a.is-active{color:var(--red);border-color:var(--red)}
+    .nav-call{min-height:48px;padding:10px 20px;font-size:var(--fs-sm)}
+    .nav-toggle{display:none;margin-left:auto;width:48px;height:48px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--navy);cursor:pointer;align-items:center;justify-content:center;flex:none}
+    .nav-toggle svg{width:24px;height:24px}
+    .nav-toggle .i-close,.nav-open .nav-toggle .i-menu{display:none}
+    .nav-open .nav-toggle .i-close{display:block}
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+    .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);min-height:min(80vh,720px)}
+    .hero-copy{display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,2.2vw,26px);padding:clamp(48px,7vw,104px) clamp(18px,4vw,64px) clamp(48px,7vw,104px) max(var(--gutter),calc((100vw - var(--container))/2))}
+    .hero-brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:500;font-size:var(--fs-h4);color:#C9D5EA}
+    .hero-brand img{width:42px;height:42px}
+    .hero h1{max-width:15em}
+    .hero p{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--on-navy);max-width:36em}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+    .hero-photo{position:relative;margin:0;min-height:360px}
+    .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .hero-photo:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--navy) 0%,#14284B00 28%)}
+    .hero-photo figcaption{position:absolute;z-index:2;right:16px;bottom:16px;background:#14284BD9;color:#fff;font-size:var(--fs-xs);padding:7px 13px;border-radius:var(--r-sm)}
+    @media (prefers-reduced-motion:no-preference){
+      .hero-copy>*{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+      .hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}
+      @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    }
+
+    .facts{background:var(--blue);color:#fff}
+    .facts ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+    .facts li{padding:clamp(16px,2vw,22px) clamp(14px,2vw,24px);border-left:1px solid #ffffff2e;display:grid;gap:2px;align-content:start}
+    .facts li:first-child{border-left:0;padding-left:0}
+    .facts b{font-family:var(--font-display);font-weight:600;font-size:var(--fs-num);line-height:1.25}
+    .facts span{font-size:var(--fs-sm);color:#D9E4F6;line-height:1.5}
+
+    /* =========================================================
+       Products
+       ========================================================= */
+    .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
+    .prod{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(18px,2.4vw,28px);align-items:start;padding:clamp(18px,2.4vw,28px);border:1px solid var(--line);border-radius:var(--r-lg);background:#fff}
+    .prod-plus{border-color:#E9B9BB}
+    .prod-body{display:grid;gap:16px;align-content:start}
+    .prod-actions{display:grid;grid-template-columns:1fr auto;gap:10px}
+    .bag-photo{margin:0;border-radius:var(--r-sm);overflow:hidden;box-shadow:var(--shadow);position:relative}
+    .bag-photo button{all:unset;display:block;cursor:zoom-in}
+    .bag-photo img{width:100%;aspect-ratio:3/4;object-fit:cover}
+    .product-kicker{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{display:inline-flex;align-items:center;padding:3px 14px;border-radius:999px;font-size:var(--fs-xs);font-weight:600;background:#E8EEF8;color:var(--navy)}
+    .chip-red{background:#FBE7E8;color:var(--red-dark)}
+    .product-name{font-size:var(--fs-h3);color:var(--navy);line-height:1.15}
+    .prod-plus .product-name{color:var(--red-dark)}
+    .product-name small{display:block;font-family:var(--font-body);font-weight:500;font-size:var(--fs-sm);color:var(--muted);margin-top:8px;line-height:1.5}
+
+    /* the printed label — the page's signature element */
+    .label{
+      border:2.5px solid var(--navy);color:var(--navy);padding:16px 18px 14px;
+      background:
+        repeating-linear-gradient(0deg,#14284B08 0 1px,transparent 1px 4px),
+        repeating-linear-gradient(90deg,#14284B08 0 1px,transparent 1px 4px),
+        #FBFBF8;
+    }
+    .label-red{border-color:var(--red-dark);color:var(--red-dark)}
+    .label-red .label-title{border-color:var(--red-dark)}
+    .label-red td{border-color:#A8222833}
+    .label-title{font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);line-height:1.3;border-bottom:2.5px solid var(--navy);padding-bottom:6px;margin-bottom:2px;display:flex;justify-content:space-between;align-items:baseline;gap:2px 12px;flex-wrap:wrap}
+    .label-title span{font-family:var(--font-body);font-weight:500;font-size:var(--fs-xs);color:var(--muted)}
+    .label table{width:100%;border-collapse:collapse}
+    .label td{padding:9px 0;border-bottom:1px solid #14284B33;font-size:var(--fs-base);line-height:1.35;color:var(--ink);vertical-align:middle}
+    .label td:last-child{text-align:right;font-family:var(--font-display);font-weight:600;font-size:var(--fs-num);white-space:nowrap;color:inherit;font-variant-numeric:tabular-nums}
+    .label td small{display:block;font-size:var(--fs-xs);color:var(--muted)}
+    .label-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 14px;margin-top:10px;font-size:var(--fs-xs);color:var(--ink)}
+    .label-foot b{font-family:var(--font-display);font-weight:600}
+    .ingredients{margin-top:clamp(24px,3vw,32px);max-width:78ch;font-size:var(--fs-sm);color:var(--muted)}
+    .ingredients b{color:var(--ink)}
+    .more-formula{margin-top:clamp(32px,4.5vw,56px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;padding:clamp(20px,3vw,28px) clamp(20px,3vw,32px);background:var(--sack);border-radius:var(--r)}
+    .more-formula p{font-size:var(--fs-lead);line-height:var(--lh-lead);max-width:52ch}
+    .more-formula b{font-family:var(--font-display);font-weight:600;color:var(--navy)}
+
+    /* =========================================================
+       Production
+       ========================================================= */
+    .production{background:var(--sack)}
+    .prod-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+    .mosaic{display:grid;grid-template-columns:1.25fr 1fr;gap:12px}
+    .mosaic figure{margin:0;position:relative;border-radius:var(--r-sm);overflow:hidden}
+    .mosaic img{width:100%;height:100%;object-fit:cover}
+    .mosaic .m-tall{grid-row:span 2}
+    .mosaic .m-wide img{aspect-ratio:4/3}
+    .mosaic figcaption{position:absolute;left:10px;bottom:10px;background:#14284BDE;color:#fff;font-size:var(--fs-xs);padding:4px 11px;border-radius:5px}
+    .steps{list-style:none;margin:28px 0 0;padding:0;display:grid;counter-reset:s}
+    .steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+    .steps li:last-child{border-bottom:1px solid var(--line)}
+    .steps li:before{counter-increment:s;content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4)}
+    .steps b{display:block;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4);color:var(--navy);line-height:1.35}
+    .steps span{font-size:var(--fs-sm);color:var(--muted)}
+
+    /* =========================================================
+       Services
+       ========================================================= */
+    .svc-feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border-radius:var(--r-lg);overflow:hidden;background:var(--navy);color:#fff}
+    .svc-photo{position:relative;min-height:360px}
+    .svc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .svc-body{padding:clamp(26px,4vw,52px);display:grid;gap:16px;align-content:center}
+    .svc-body p{color:var(--on-navy)}
+    .ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+    .ticks li{position:relative;padding-left:32px;font-size:var(--fs-base);line-height:1.6}
+    .ticks li:before{content:"";position:absolute;left:0;top:.3em;width:20px;height:20px;border-radius:50%;background:var(--red) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat}
+    .svc-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);margin-top:var(--gap)}
+    .svc{border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(24px,3vw,40px);display:grid;gap:14px;align-content:start;background:#fff}
+    .svc-icon{width:60px;height:60px;border-radius:14px;display:grid;place-items:center;background:#FBE7E8;color:var(--red)}
+    .svc-icon svg{width:32px;height:32px}
+    .svc h3{color:var(--navy)}
+    .svc p{color:var(--muted)}
+    .svc-cta{margin-top:6px;justify-self:start}
+    .media-thumb{margin:0;display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:center;background:#ffffff12;border:1px solid #ffffff26;border-radius:var(--r);padding:10px}
+    .media-thumb button{all:unset;display:block;width:84px;height:110px;border-radius:5px;overflow:hidden;cursor:zoom-in}
+    .media-thumb img{width:100%;height:100%;object-fit:cover}
+    .media-thumb figcaption{font-size:var(--fs-sm);color:#C9D5EA;line-height:1.55}
+
+    /* =========================================================
+       Milk band
+       ========================================================= */
+    .milk{background:linear-gradient(180deg,var(--sack) 0 50%,#fff 50% 100%)}
+    .milk-card{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 30px 60px -36px #14284B55}
+    .milk-card img{width:100%;height:100%;object-fit:cover;aspect-ratio:660/830}
+    .milk-text{padding:clamp(28px,5vw,68px);display:grid;gap:18px;align-content:center}
+    .milk-text h2{color:var(--navy)}
+    .milk-text p{font-size:var(--fs-lead);line-height:var(--lh-lead);color:var(--muted)}
+
+    /* =========================================================
+       Gallery
+       ========================================================= */
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(170px,16vw,240px);grid-auto-flow:dense;gap:12px}
+    .g{margin:0;border-radius:var(--r-sm);overflow:hidden;background:var(--sack);position:relative}
+    .g.tall{grid-row:span 2}
+    .g.wide{grid-column:span 2}
+    .g button{all:unset;display:block;width:100%;height:100%;cursor:zoom-in}
+    .g button:focus-visible,.bag-photo button:focus-visible,.media-thumb button:focus-visible{outline:3px solid #F2B705;outline-offset:-3px}
+    .g img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+    .g:hover img{transform:scale(1.04)}
+    .g figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 12px 9px;font-size:var(--fs-xs);color:#fff;background:linear-gradient(transparent,#14284BCC);pointer-events:none}
+
+    /* =========================================================
+       FAQ
+       ========================================================= */
+    .faq{background:var(--sack)}
+    .faq .section-head{margin-inline:auto;text-align:center}
+    .faq-list{max-width:880px;margin-inline:auto;display:grid;gap:10px}
+    details{background:#fff;border:1px solid var(--line);border-radius:var(--r)}
+    details[open]{border-color:#B9C4D6}
+    summary{cursor:pointer;list-style:none;font-weight:600;font-size:var(--fs-h4);line-height:1.45;padding:20px 58px 20px 22px;position:relative}
+    summary::-webkit-details-marker{display:none}
+    summary:after{content:"";position:absolute;right:24px;top:50%;width:11px;height:11px;border-right:2.5px solid var(--navy);border-bottom:2.5px solid var(--navy);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+    details[open] summary:after{transform:translateY(-30%) rotate(-135deg)}
+    details p{padding:0 22px 20px;color:var(--muted)}
+
+    /* =========================================================
+       Contact
+       ========================================================= */
+    .contact{background:var(--navy);color:#fff}
+    .contact h2{color:#fff}
+    .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+    .contact-info{display:grid;gap:22px}
+    .contact-info .lede{color:#C9D5EA}
+    .phones{display:grid;gap:12px}
+    .phone{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px 12px 18px;border:1px solid #ffffff26;border-radius:var(--r);background:#ffffff0A}
+    .phone a{color:#fff;text-decoration:none;font-family:var(--font-display);font-weight:600;font-size:var(--fs-num);line-height:1.25;font-variant-numeric:tabular-nums}
+    @media(hover:hover){.phone a:hover{color:#FFD2D4}}
+    .phone small{display:block;font-family:var(--font-body);font-weight:400;font-size:var(--fs-xs);color:var(--on-navy-2)}
+    .addr{display:grid;gap:10px;color:var(--on-navy)}
+    .addr-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .social-row{display:flex;flex-wrap:wrap;gap:10px}
+    .map-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:var(--r);background:#ffffff14}
+    .form-card{background:#fff;color:var(--ink);border-radius:var(--r-lg);padding:clamp(22px,3.4vw,42px);display:grid;gap:16px;box-shadow:0 30px 60px -30px #00000080}
+    .form-card h3{color:var(--navy)}
+    .form-card .hint{color:var(--muted);font-size:var(--fs-sm)}
+    .field{display:grid;gap:6px}
+    .field label{font-weight:600;font-size:var(--fs-sm)}
+    .field input,.field select,.field textarea{width:100%;min-height:54px;border:1.5px solid #C5CDDA;border-radius:8px;background:#fff;color:var(--ink);padding:12px 14px;font:inherit;font-size:var(--fs-base)}
+    .field textarea{resize:vertical;min-height:120px;line-height:1.6}
+    .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px #2457A633}
+    .field.is-flash select{border-color:var(--red);box-shadow:0 0 0 3px #C62A2F33}
+    .form-card .btn{width:100%}
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+    .footer{background:var(--navy-3);color:#B9C6DD;font-size:var(--fs-sm)}
+    .footer-main{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 28px;padding-block:30px}
+    .footer-brand{display:flex;align-items:center;gap:12px;line-height:1.6}
+    .footer-brand img{width:44px;height:44px;flex:none}
+    .footer-brand b{display:block;color:#fff;font-family:var(--font-display);font-weight:600;font-size:var(--fs-h4)}
+    .footer-links{display:flex;flex-wrap:wrap;gap:6px 22px}
+    .footer-links a{color:#D9E2F1;text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;gap:7px;min-height:44px}
+    .footer-links a:hover{color:#fff}
+    .footer-links svg{width:19px;height:19px}
+    .footer-bottom{border-top:1px solid #ffffff1c;padding-block:16px;text-align:center;font-size:var(--fs-xs);color:#93A3C0}
+    .call-fab{display:none}
+
+    /* =========================================================
+       SweetAlert2 theme
+       ========================================================= */
+    .swal2-popup{font-family:var(--font-body)!important;border-radius:var(--r-lg)!important;font-size:var(--fs-base)!important;padding:clamp(18px,3vw,30px)!important}
+    .swal2-title{font-family:var(--font-display)!important;font-weight:600!important;color:var(--navy)!important;font-size:var(--fs-h3)!important;line-height:1.3!important}
+    .swal2-html-container{color:var(--muted)!important;font-size:var(--fs-base)!important;line-height:1.7!important;margin:12px 4px 0!important}
+    .swal2-actions{gap:8px;flex-wrap:wrap}
+    .swal2-styled{font-family:var(--font-body)!important;font-weight:600!important;font-size:var(--fs-base)!important;border-radius:var(--r-sm)!important;padding:12px 24px!important;min-height:50px;margin:0!important}
+    .swal2-close{font-size:2.2em!important}
+    .swal2-close:focus{box-shadow:none!important;outline:none}
+    .swal2-close:focus-visible{box-shadow:0 0 0 3px #F2B705!important}
+    .swal2-toast{padding:12px 16px!important;font-size:var(--fs-sm)!important}
+    .swal2-toast .swal2-title{font-family:var(--font-body)!important;font-size:var(--fs-sm)!important;color:var(--ink)!important;font-weight:600!important}
+    .swal-summary{text-align:left;background:var(--sack);border-radius:8px;padding:14px 16px;margin-top:10px;font-size:var(--fs-sm);color:var(--ink)}
+    .swal-summary div+div{margin-top:4px}
+    .swal-call{display:grid;gap:10px;text-align:left;margin-top:6px}
+    .swal-call .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r)}
+    .swal-call a{font-family:var(--font-display);font-weight:600;font-size:var(--fs-num);color:var(--navy);text-decoration:none;font-variant-numeric:tabular-nums}
+    .swal-call small{display:block;font-size:var(--fs-xs);color:var(--muted)}
+    .swal-prod{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:20px;text-align:left;align-items:start}
+    .swal-prod img{width:100%;border-radius:var(--r-sm);aspect-ratio:3/4;object-fit:cover}
+    .swal-prod .label td{font-size:var(--fs-sm)}
+    .swal-prod .label td:last-child{font-size:var(--fs-h4)}
+    .swal-prod p{font-size:var(--fs-sm);margin-top:12px}
+    .lb{margin:0;display:grid;gap:12px}
+    .lb img{width:100%;max-height:70vh;object-fit:contain;border-radius:var(--r-sm);background:var(--sack)}
+    .lb-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+    .lb-bar figcaption{font-family:var(--font-display);font-weight:500;color:var(--navy);font-size:var(--fs-h4)}
+    .lb-count{display:block;font-size:var(--fs-xs);color:var(--muted);font-variant-numeric:tabular-nums}
+    .lb-nav{display:flex;gap:8px}
+    .lb-nav button{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;display:grid;place-items:center}
+    .lb-nav button:hover{border-color:var(--navy)}
+    .lb-nav svg{width:22px;height:22px}
+
+    /* =========================================================
+       Responsive
+       ========================================================= */
+    @media(max-width:1200px) and (min-width:961px){
+      .prod{grid-template-columns:1fr}
+      .bag-photo img{aspect-ratio:16/10;object-position:50% 28%}
+    }
+    @media(max-width:1100px){
+      .nav-links a{font-size:var(--fs-xs)}
+      .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media(max-width:960px){
+      :root{--header-h:70px}
+      .nav-inner{flex-wrap:wrap;gap:12px}
+      .brand{flex:1 1 0}
+      .nav-toggle{display:inline-flex}
+      .nav-call{display:none}
+      .nav-links{display:none;order:3;width:100%;flex-direction:column;gap:0;margin:0;padding:4px 0 12px;border-top:1px solid var(--line)}
+      .nav-open .nav-links{display:flex}
+      .nav-links a{font-size:var(--fs-base);padding:14px 4px;border-bottom:1px solid var(--line)}
+      .hero-grid{grid-template-columns:1fr;min-height:0}
+      .hero-copy{padding:clamp(36px,6vw,56px) var(--gutter) 40px}
+      .hero h1{max-width:none}
+      .hero-photo{min-height:0;aspect-ratio:16/10}
+      .hero-photo:before{background:linear-gradient(180deg,var(--navy) 0%,#14284B00 22%)}
+      .facts ul{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .facts li:nth-child(3){border-left:0;padding-left:0}
+      .facts li:nth-child(n+3){border-top:1px solid #ffffff2e}
+      .prod-layout,.contact-grid{grid-template-columns:1fr}
+      .products{grid-template-columns:1fr}
+      .svc-feature{grid-template-columns:1fr}
+      .svc-photo{min-height:0;aspect-ratio:16/10}
+    }
+    @media(max-width:720px){
+      body{padding-bottom:88px}
+      .svc-pair{grid-template-columns:1fr}
+      .milk-card{grid-template-columns:1fr}
+      .milk-card img{aspect-ratio:16/11}
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:168px}
+      .g.wide{grid-column:span 2}
+      .call-fab{display:flex;position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;box-shadow:0 12px 30px -8px #14284B99}
+      .footer-main{flex-direction:column;align-items:flex-start}
+      .swal-prod{grid-template-columns:1fr}
+      .swal-prod img{aspect-ratio:16/11;object-position:50% 28%}
+    }
+    @media(max-width:560px){
+      .prod{grid-template-columns:1fr}
+      .bag-photo img{aspect-ratio:16/11;object-position:50% 28%}
+      .prod-actions{grid-template-columns:1fr}
+      .hero-actions .btn{flex:1 1 100%}
+      .more-formula .btn{width:100%}
+    }
+    @media(max-width:460px){
+      .nb{white-space:normal}
+      .brand img{width:44px;height:44px}
+      .facts li{padding:14px 10px}
+      .facts li:nth-child(odd){padding-left:0}
+      .label{padding:14px 14px 12px}
+      .steps li{grid-template-columns:46px 1fr;gap:12px}
+      .phone{padding:10px 10px 10px 14px}
+      .gallery-grid{grid-auto-rows:140px;gap:8px}
+    }
+    /* short landscape phones */
+    @media(max-height:520px) and (orientation:landscape){
+      .hero-grid{min-height:0}
+      .hero-photo{aspect-ratio:21/9}
+      .call-fab{display:none}
+      body{padding-bottom:0}
+    }
+    @media(min-width:1600px){
+      .hero-grid{min-height:min(76vh,780px)}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.g img,summary:after,.site-header{transition:none}}
+</style>
+</head>
+<body>
+  <a class="skip" href="#main">ข้ามไปเนื้อหาหลัก</a>
+
+  <header class="site-header pad" id="site-header">
+    <div class="shell nav-inner">
+      <a class="brand" href="#top" aria-label="ลำพญาฟีดส์ หน้าแรก">
+        <img src="images/logo.svg" alt="" width="52" height="52">
+        <span class="brand-text">
+          <span class="brand-name">ลำพญาฟีดส์</span>
+          <span class="brand-sub">บริษัท ฟาร์มลำพญา จำกัด</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="เปิดเมนู">
+        <svg class="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <nav class="nav-links" id="main-nav" aria-label="เมนูหลัก">
+        <a href="#product">ผลิตภัณฑ์</a>
+        <a href="#production">การผลิต</a>
+        <a href="#services">บริการ</a>
+        <a href="#gallery">ภาพโรงงาน</a>
+        <a href="#faq">คำถามที่พบบ่อย</a>
+        <a href="#contact">ติดต่อ</a>
+      </nav>
+      <a class="btn btn-red nav-call" href="tel:0819769810">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>
+        081-976-9810
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section id="top" class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="hero-brand"><img src="images/logo.svg" alt="" width="42" height="42">ลำพญาฟีดส์ จากมวกเหล็ก สระบุรี</div>
+          <h1><span class="nb">อาหารโคนมคุณภาพสูง</span> <span class="nb">ผลิตเองทุกกระสอบ</span></h1>
+          <p>อาหารโคนม ลำพญา 816 และลำพญาพลัส สำหรับโคระยะอุ้มท้องและให้นม ผลิตในโรงงานของเราเอง และมีทีมงานดูแลต่อหลังการขาย ทั้งให้ความรู้ด้านการเลี้ยงและบริการผสมเทียมถึงฟาร์ม</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="#contact">สั่งซื้ออาหารโคนม</a>
+            <a class="btn btn-ghost" href="#services">ดูบริการหลังการขาย</a>
+          </div>
+        </div>
+        <figure class="hero-photo">
+          <img src="images/hero-warehouse.jpg" alt="โรงเก็บวัตถุดิบอาหารสัตว์ของฟาร์มลำพญา" width="1477" height="1108" fetchpriority="high">
+          <figcaption>โรงผลิตอาหารสัตว์ ต.ลำพญากลาง</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="facts pad" aria-label="ข้อมูลผลิตภัณฑ์">
+      <ul class="shell">
+        <li><b>2 สูตร</b><span>ขึ้นทะเบียนอาหารสัตว์ถูกต้อง</span></li>
+        <li><b>โปรตีน 16–18%</b><span>ลำพญา 816 และลำพญาพลัส</span></li>
+        <li><b>50 กิโลกรัม</b><span>น้ำหนักสุทธิต่อกระสอบ</span></li>
+        <li><b>ดูแลถึงฟาร์ม</b><span>วิชาการ และผสมเทียม</span></li>
+      </ul>
+    </div>
+    <div class="stripe" aria-hidden="true"></div>
+
+    <!-- ===== PRODUCT ===== -->
+    <section id="product" class="section pad">
+      <div class="shell">
+        <div class="section-head">
+          <h2><span class="nb">อาหารโคนม 2 สูตร</span> <span class="nb">สำหรับโคระยะอุ้มท้องและให้นม</span></h2>
+          <p class="lede">อาหารสัตว์ผสมสำเร็จรูปชนิดผง ขึ้นทะเบียนอาหารสัตว์ถูกต้องทั้งสองสูตร เลือกตามระดับโปรตีนที่ฝูงของคุณต้องการ</p>
+        </div>
+
+        <div class="products">
+          <article class="prod">
+            <figure class="bag-photo">
+              <button type="button" class="js-detail" data-id="816" aria-label="ดูรายละเอียดลำพญา 816"><img src="images/product-816.jpg" alt="กระสอบอาหารโคนม ลำพญาฟีดส์ สูตรลำพญา 816 น้ำหนัก 50 กิโลกรัม" width="980" height="1320" loading="lazy"></button>
+            </figure>
+            <div class="prod-body">
+              <div class="product-kicker"><span class="chip">สูตรมาตรฐาน</span></div>
+              <h3 class="product-name">ลำพญา 816<small>สำหรับโคระยะอุ้มท้องและให้นม</small></h3>
+              <div class="label" role="group" aria-label="คุณภาพทางเคมี ลำพญา 816 ตามที่ระบุบนกระสอบ">
+                <div class="label-title">คุณภาพทางเคมี <span>ตามที่ระบุบนกระสอบ</span></div>
+                <table>
+                  <tbody>
+                    <tr><td>โปรตีน<small>ไม่น้อยกว่า</small></td><td>16%</td></tr>
+                    <tr><td>ไขมัน<small>ไม่น้อยกว่า</small></td><td>2%</td></tr>
+                    <tr><td>กากอาหาร<small>ไม่มากกว่า</small></td><td>14%</td></tr>
+                    <tr><td>ความชื้น<small>ไม่มากกว่า</small></td><td>13%</td></tr>
+                  </tbody>
+                </table>
+                <div class="label-foot">
+                  <span>น้ำหนักสุทธิ <b>50 กก.</b></span>
+                  <span>เลขทะเบียน <b>01 02 66 0030</b></span>
+                </div>
+              </div>
+              <div class="prod-actions"><a class="btn btn-navy js-request" data-request="ลำพญา 816" href="#contact">สั่งซื้อ ลำพญา 816</a><button type="button" class="btn btn-outline js-detail" data-id="816">รายละเอียด</button></div>
+            </div>
+          </article>
+
+          <article class="prod prod-plus">
+            <figure class="bag-photo">
+              <button type="button" class="js-detail" data-id="plus" aria-label="ดูรายละเอียดลำพญาพลัส"><img src="images/product-plus.jpg" alt="กระสอบอาหารโคนม ลำพญาฟีดส์ สูตรลำพญาพลัส น้ำหนัก 50 กิโลกรัม" width="1068" height="1440" loading="lazy"></button>
+            </figure>
+            <div class="prod-body">
+              <div class="product-kicker"><span class="chip chip-red">โปรตีนสูง</span></div>
+              <h3 class="product-name">ลำพญาพลัส<small>สำหรับโคระยะอุ้มท้องและให้นม</small></h3>
+              <div class="label label-red" role="group" aria-label="คุณภาพทางเคมี ลำพญาพลัส ตามที่ระบุบนกระสอบ">
+                <div class="label-title">คุณภาพทางเคมี <span>ตามที่ระบุบนกระสอบ</span></div>
+                <table>
+                  <tbody>
+                    <tr><td>โปรตีน<small>ไม่น้อยกว่า</small></td><td>18%</td></tr>
+                    <tr><td>ไขมัน<small>ไม่น้อยกว่า</small></td><td>2%</td></tr>
+                    <tr><td>กากอาหาร<small>ไม่มากกว่า</small></td><td>14%</td></tr>
+                    <tr><td>ความชื้น<small>ไม่มากกว่า</small></td><td>13%</td></tr>
+                  </tbody>
+                </table>
+                <div class="label-foot">
+                  <span>น้ำหนักสุทธิ <b>50 กก.</b></span>
+                  <span>เลขทะเบียน <b>01 02 66 0029</b></span>
+                </div>
+              </div>
+              <div class="prod-actions"><a class="btn btn-red js-request" data-request="ลำพญาพลัส" href="#contact">สั่งซื้อ ลำพญาพลัส</a><button type="button" class="btn btn-outline js-detail" data-id="plus">รายละเอียด</button></div>
+            </div>
+          </article>
+        </div>
+
+        <p class="ingredients"><b>วัตถุดิบหลักทั้งสองสูตร</b> กากถั่วเหลือง ข้าวโพดป่น รำละเอียด กากปาล์ม กากเบียร์ มันสำปะหลัง กากน้ำตาล น้ำมันพืช ไดแคลเซียมฟอสเฟต เกลือ แร่ธาตุ และวิตามิน ผสมตามสูตรที่ขึ้นทะเบียนไว้</p>
+
+        <div class="more-formula">
+          <p><b>เลี้ยงโคหลายช่วงอายุ?</b> สอบถามสูตรอาหารอื่น หรือให้ทีมงานช่วยคำนวณปริมาณที่เหมาะกับฝูงของคุณ</p>
+          <a class="btn btn-navy js-request" data-request="สอบถามสูตรอาหารอื่น" href="#contact">ปรึกษาทีมงาน</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRODUCTION ===== -->
+    <section id="production" class="production section pad">
+      <div class="shell prod-layout">
+        <div class="mosaic">
+          <figure class="m-tall"><img src="images/feed-mill.jpg" alt="ไซโลและเครื่องผสมอาหารสัตว์ในโรงงาน" width="1108" height="1357" loading="lazy"><figcaption>ไซโลและเครื่องผสม</figcaption></figure>
+          <figure class="m-wide"><img src="images/raw-materials.jpg" alt="กองวัตถุดิบและแร่ธาตุในโรงผสม" width="1477" height="1108" loading="lazy"><figcaption>วัตถุดิบและแร่ธาตุ</figcaption></figure>
+          <figure class="m-wide"><img src="images/feed-closeup.jpg" alt="เนื้ออาหารโคนมผสมเสร็จ บนฝ่ามือ" width="1108" height="1357" loading="lazy" style="object-position:60% 55%"><figcaption>อาหารผสมเสร็จ</figcaption></figure>
+        </div>
+        <div>
+          <div class="section-head" style="margin-bottom:0">
+            <h2><span class="nb">จากวัตถุดิบ</span> <span class="nb">ถึงกระสอบที่ส่งถึงฟาร์ม</span></h2>
+            <p class="lede">เราผลิตในโรงงานของบริษัทเองที่ ต.ลำพญากลาง ดูแลทุกขั้นตอนตั้งแต่รับวัตถุดิบจนบรรจุกระสอบ</p>
+          </div>
+          <ol class="steps">
+            <li><div><b>คัดวัตถุดิบ</b><span>ตรวจสภาพและความชื้นของวัตถุดิบก่อนนำเข้าโรงผสม</span></div></li>
+            <li><div><b>ชั่งตามสูตร</b><span>ชั่งวัตถุดิบ แร่ธาตุ และวิตามินตามสัดส่วนของสูตรที่ขึ้นทะเบียน</span></div></li>
+            <li><div><b>ผสมให้เข้ากัน</b><span>ลำเลียงเข้าเครื่องผสม ผสมจนเนื้ออาหารสม่ำเสมอทั้งล็อต</span></div></li>
+            <li><div><b>บรรจุและระบุล็อต</b><span>บรรจุกระสอบละ 50 กก. พิมพ์วันผลิตและเลขล็อตทุกกระสอบ</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services" class="section pad">
+      <div class="shell">
+        <div class="section-head">
+          <h2><span class="nb">ซื้ออาหารกับเรา</span> <span class="nb">แล้วไม่ต้องเลี้ยงโคคนเดียว</span></h2>
+          <p class="lede">ลูกค้าลำพญาฟีดส์ได้รับบริการต่อเนื่องหลังการขาย เพื่อให้อาหารที่ซื้อไปให้ผลเต็มที่ในฟาร์มจริง</p>
+        </div>
+
+        <article class="svc-feature" id="academic">
+          <div class="svc-photo"><img src="images/academic-meeting.jpg" alt="ทีมงานประชุมและให้คำปรึกษาด้านการจัดการฟาร์ม" width="1477" height="1048" loading="lazy"></div>
+          <div class="svc-body">
+            <h3>บริการวิชาการ</h3>
+            <p>อบรมและให้คำปรึกษาด้านการเลี้ยงโคนม ตั้งแต่การให้อาหาร การจัดการฝูง จนถึงการวางแผนผลผลิตน้ำนม</p>
+            <ul class="ticks">
+              <li>คำแนะนำการให้อาหารตามระยะของโค</li>
+              <li>อบรมความรู้สำหรับเกษตรกรและกลุ่มสหกรณ์</li>
+              <li>ปรึกษาปัญหาในฟาร์มทางโทรศัพท์และ LINE</li>
+            </ul>
+            <figure class="media-thumb">
+              <button type="button" class="js-zoom" data-src="images/dairy-knowledge.jpg" data-caption="สื่อความรู้ที่ใช้ในการอบรม" aria-label="ดูภาพสื่อความรู้ขนาดใหญ่"><img src="images/dairy-knowledge.jpg" alt="แผนภาพการแปรรูปผลิตภัณฑ์นม สื่อที่ใช้ในการอบรม" loading="lazy"></button>
+              <figcaption>ตัวอย่างสื่อความรู้ที่ใช้ในการอบรม แตะเพื่อดูภาพขยาย</figcaption>
+            </figure>
+            <div><a class="btn btn-light js-request" data-request="ปรึกษาด้านวิชาการ / การเลี้ยง" href="#contact">ปรึกษาทีมวิชาการ</a></div>
+          </div>
+        </article>
+
+        <div class="svc-pair">
+          <article class="svc" id="aftersales">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l3-3 4 4 8-8 3 3-11 11z"/><path d="M14 7l3 3"/></svg></span>
+            <h3>บริการหลังการขาย</h3>
+            <p>ทีมงานติดตามผลหลังลูกค้าเปลี่ยนมาใช้อาหารของเรา และพร้อมช่วยแก้ปัญหาเมื่อผลผลิตไม่เป็นไปตามที่คาด</p>
+            <ul class="ticks">
+              <li>ติดตามผลการใช้อาหารที่ฟาร์ม</li>
+              <li>ปรับปริมาณการให้อาหารให้เหมาะกับฝูง</li>
+              <li>จัดส่งตามรอบที่ตกลงกัน</li>
+            </ul>
+            <a class="btn btn-outline btn-sm svc-cta js-request" data-request="บริการหลังการขาย" href="#contact">นัดทีมงานเข้าฟาร์ม</a>
+          </article>
+          <article class="svc" id="ai">
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v6.5L5.5 18a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9.5V3"/><path d="M7.5 14h9"/></svg></span>
+            <h3>บริการผสมเทียม</h3>
+            <p>บริการผสมเทียมโคนมถึงฟาร์ม เพื่อช่วยให้แม่โคตั้งท้องตามรอบ และวางแผนการให้นมได้ต่อเนื่อง</p>
+            <ul class="ticks">
+              <li>นัดหมายเจ้าหน้าที่ผ่านโทรศัพท์หรือ LINE</li>
+              <li>บันทึกประวัติการผสมของแม่โคแต่ละตัว</li>
+              <li>ติดตามผลการตั้งท้องหลังผสม</li>
+            </ul>
+            <a class="btn btn-outline btn-sm svc-cta js-request" data-request="นัดบริการผสมเทียม" href="#contact">นัดหมายผสมเทียม</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MILK ===== -->
+    <section class="milk pad" aria-labelledby="milk-title">
+      <div class="shell milk-card">
+        <img src="images/fresh-milk.jpg" alt="น้ำนมโคสดในแก้ว" width="660" height="830" loading="lazy">
+        <div class="milk-text">
+          <h2 id="milk-title"><span class="nb">อาหารที่ดี</span> <span class="nb">คือจุดเริ่มต้นของน้ำนมที่ดี</span></h2>
+          <p>โคที่ได้รับโปรตีนและแร่ธาตุครบตามระยะ มีสุขภาพแข็งแรงและให้น้ำนมได้สม่ำเสมอ เราจึงดูแลตั้งแต่สูตรอาหารไปจนถึงการจัดการในฟาร์ม</p>
+          <div><a class="btn btn-red js-request" data-request="สอบถามสูตรอาหารอื่น" href="#contact">ปรึกษาเรื่องสูตรอาหาร</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section id="gallery" class="section pad">
+      <div class="shell">
+        <div class="section-head">
+          <h2><span class="nb">ภาพจากโรงงาน</span> <span class="nb">และการทำงาน</span></h2>
+          <p class="lede">แตะที่รูปเพื่อดูภาพขยาย</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="g wide tall"><button type="button"><img src="images/hero-warehouse.jpg" alt="โรงเก็บวัตถุดิบขนาดใหญ่" loading="lazy"></button><figcaption>โรงเก็บวัตถุดิบ</figcaption></figure>
+          <figure class="g tall"><button type="button"><img src="images/feed-mill.jpg" alt="ไซโลและเครื่องผสมอาหารสัตว์" loading="lazy"></button><figcaption>ไซโลและเครื่องผสม</figcaption></figure>
+          <figure class="g tall"><button type="button"><img src="images/factory-conveyor.jpg" alt="สายพานลำเลียงในโรงผลิต" loading="lazy" style="object-position:62% 50%"></button><figcaption>สายพานลำเลียง</figcaption></figure>
+          <figure class="g tall"><button type="button"><img src="images/product-816.jpg" alt="กระสอบลำพญา 816" loading="lazy"></button><figcaption>ลำพญา 816</figcaption></figure>
+          <figure class="g tall"><button type="button"><img src="images/product-plus.jpg" alt="กระสอบลำพญาพลัส" loading="lazy"></button><figcaption>ลำพญาพลัส</figcaption></figure>
+          <figure class="g wide"><button type="button"><img src="images/raw-materials.jpg" alt="วัตถุดิบและแร่ธาตุ" loading="lazy"></button><figcaption>วัตถุดิบและแร่ธาตุ</figcaption></figure>
+          <figure class="g"><button type="button"><img src="images/feed-closeup.jpg" alt="เนื้ออาหารโคนม" loading="lazy"></button><figcaption>เนื้ออาหาร</figcaption></figure>
+          <figure class="g"><button type="button"><img src="images/academic-meeting.jpg" alt="การประชุมให้คำปรึกษา" loading="lazy"></button><figcaption>บริการวิชาการ</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section id="faq" class="faq section pad">
+      <div class="shell">
+        <div class="section-head">
+          <h2>คำถามที่พบบ่อย</h2>
+        </div>
+        <div class="faq-list">
+          <details><summary>ลำพญา 816 กับลำพญาพลัส ต่างกันอย่างไร?</summary><p>ทั้งสองสูตรใช้กับโคระยะอุ้มท้องและให้นม ต่างกันที่ระดับโปรตีน ลำพญา 816 มีโปรตีนไม่น้อยกว่า 16% ส่วนลำพญาพลัสมีโปรตีนไม่น้อยกว่า 18% เหมาะกับฝูงที่ต้องการโปรตีนเสริมมากขึ้น ทีมงานช่วยแนะนำสูตรและปริมาณต่อวันให้เหมาะกับฝูงของคุณ</p></details>
+          <details><summary>สั่งซื้อขั้นต่ำเท่าไร และมีบริการจัดส่งไหม?</summary><p>มีบริการจัดส่งถึงฟาร์ม ค่าขนส่งขึ้นกับระยะทางและจำนวนกระสอบ โทรสอบถามขั้นต่ำและรอบส่งได้ที่ 081-976-9810 หรือ 098-098-6933</p></details>
+          <details><summary>บริการวิชาการและผสมเทียมมีค่าใช้จ่ายไหม?</summary><p>สอบถามเงื่อนไขสำหรับลูกค้าที่ใช้อาหารของเราได้กับทีมงานโดยตรง</p></details>
+          <details><summary>ตรวจสอบได้อย่างไรว่าเป็นสินค้าแท้?</summary><p>กระสอบลำพญาฟีดส์ทุกใบพิมพ์ชื่อผู้ผลิต บริษัท ฟาร์มลำพญา จำกัด เลขทะเบียนอาหารสัตว์ 01 02 66 0030 วันผลิต และเลขล็อตไว้ชัดเจน</p></details>
+          <details><summary>เข้ามารับสินค้าเองที่โรงงานได้ไหม?</summary><p>ได้ โรงงานตั้งอยู่ที่ 190 หมู่ 13 ต.ลำพญากลาง อ.มวกเหล็ก จ.สระบุรี กรุณาโทรนัดล่วงหน้าเพื่อเตรียมสินค้า</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="contact section pad">
+      <div class="shell contact-grid">
+        <div class="contact-info">
+          <h2><span class="nb">สั่งซื้ออาหาร</span> <span class="nb">หรือนัดบริการ</span></h2>
+          <p class="lede">โทรหาเราโดยตรง หรือฝากข้อมูลไว้ ทีมงานจะติดต่อกลับ</p>
+          <div class="phones">
+            <div class="phone"><a href="tel:0819769810">081-976-9810<small>ฝ่ายขายและบริการ</small></a><button type="button" class="btn btn-light btn-sm js-copy" data-copy="081-976-9810" data-label="เบอร์โทร"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>คัดลอก</button></div>
+            <div class="phone"><a href="tel:0980986933">098-098-6933<small>ฝ่ายขายและบริการ</small></a><button type="button" class="btn btn-light btn-sm js-copy" data-copy="098-098-6933" data-label="เบอร์โทร"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>คัดลอก</button></div>
+          </div>
+          <div class="addr">
+            <p>บริษัท ฟาร์มลำพญา จำกัด<br>190 หมู่ 13 ถ.ปากช่อง–ลำสมพุง ต.ลำพญากลาง อ.มวกเหล็ก จ.สระบุรี 30130</p>
+            <div class="addr-actions">
+              <button type="button" class="btn btn-light btn-sm js-directions"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>นำทางมาโรงงาน</button>
+              <button type="button" class="btn btn-light btn-sm js-copy" data-copy="บริษัท ฟาร์มลำพญา จำกัด 190 หมู่ 13 ถ.ปากช่อง-ลำสมพุง ต.ลำพญากลาง อ.มวกเหล็ก จ.สระบุรี 30130" data-label="ที่อยู่"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>คัดลอกที่อยู่</button>
+            </div>
+          </div>
+          <div class="social-row">
+            <a class="btn btn-line js-line" href="#contact" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5 1.1-.5 6-3.5 8.2-6.1C21.6 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>
+              แชทผ่าน LINE OA
+            </a>
+            <a class="btn btn-fb" href="https://www.facebook.com/100057221329118" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7h3l.5-4h-3.5V9c0-.6.4-1 1-1z"/></svg>
+              เพจ Facebook
+            </a>
+          </div>
+          <iframe class="map-frame" title="แผนที่บริษัท ฟาร์มลำพญา จำกัด" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=%E0%B8%95.%E0%B8%A5%E0%B8%B3%E0%B8%9E%E0%B8%8D%E0%B8%B2%E0%B8%81%E0%B8%A5%E0%B8%B2%E0%B8%87+%E0%B8%AD.%E0%B8%A1%E0%B8%A7%E0%B8%81%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B9%87%E0%B8%81+%E0%B8%AA%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%B8%E0%B8%A3%E0%B8%B5&amp;z=13&amp;output=embed"></iframe>
+        </div>
+
+        <form id="quote-form" class="form-card" novalidate>
+          <h3>ฝากข้อมูล ให้ทีมงานโทรกลับ</h3>
+          <p class="hint">ใช้เวลาไม่ถึงหนึ่งนาที</p>
+          <div class="field"><label for="f-name">ชื่อ หรือชื่อฟาร์ม</label><input id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required></div>
+          <div class="field"><label for="f-phone">เบอร์โทร</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="เช่น 081-234-5678" required></div>
+          <div class="field">
+            <label for="f-type">ต้องการ</label>
+            <select id="f-type" name="request_type">
+              <option>สั่งซื้อ ลำพญา 816 (โปรตีน 16%)</option>
+              <option>สั่งซื้อ ลำพญาพลัส (โปรตีน 18%)</option>
+              <option>สอบถามสูตรอาหารอื่น</option>
+              <option>นัดบริการผสมเทียม</option>
+              <option>ปรึกษาด้านวิชาการ / การเลี้ยง</option>
+              <option>บริการหลังการขาย</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-details">รายละเอียด</label><textarea id="f-details" name="details" rows="4" maxlength="2000" placeholder="เช่น จำนวนกระสอบ จำนวนโคในฟาร์ม และอำเภอที่ต้องการให้ส่ง" required></textarea></div>
+          <button class="btn btn-red" id="f-submit" type="submit">ส่งข้อมูลให้ทีมงาน</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div class="stripe" aria-hidden="true"></div>
+  <footer class="footer pad">
+    <div class="shell footer-main">
+      <div class="footer-brand">
+        <img src="images/logo.svg" alt="" width="44" height="44">
+        <div><b>ลำพญาฟีดส์</b>© <span id="year">2026</span> บริษัท ฟาร์มลำพญา จำกัด (FARM LAMPHAYA CO., LTD.) ทะเบียนนิติบุคคล 0195561002308</div>
+      </div>
+      <nav class="footer-links" aria-label="ช่องทางติดต่อ">
+        <a href="https://www.facebook.com/100057221329118" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v7h4v-7h3l.5-4h-3.5V9c0-.6.4-1 1-1z"/></svg>Facebook</a>
+        <a class="js-line" href="#contact" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 3.9 3.5 7.2 8.3 7.9.3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5 1.1-.5 6-3.5 8.2-6.1C21.6 14.3 22 12.7 22 11c0-4.4-4.5-8-10-8z"/></svg>LINE OA</a>
+        <a href="privacy.html">นโยบายความเป็นส่วนตัว</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">สงวนสิทธิ์ทุกประการ &nbsp;|&nbsp; พัฒนาระบบโดย นายโกสินทร์ แดงวิจิตร</div>
+  </footer>
+
+  <a class="btn btn-red call-fab" href="tel:0819769810">โทรสั่งซื้อ 081-976-9810</a>
+
+  <script>
+    /* ===== ตั้งค่า =====
+       LINE_OA_ID   : ไอดี LINE OA เช่น '@lamphayafeeds' หรือลิงก์ 'https://lin.ee/xxxx'
+       FORM_ENDPOINT: ลิงก์ Formspree เช่น 'https://formspree.io/f/xxxx' (ถ้าเว้นว่าง จะส่งทาง SMS)
+       SMS_PHONE    : เบอร์ที่รับ SMS และสายโทรจากแบบฟอร์ม
+       MAPS_URL     : ลิงก์ Google Maps ของโรงงาน (ปักหมุดจริงแล้วนำลิงก์มาใส่ได้) */
+    const LINE_OA_ID = '';
+    const FORM_ENDPOINT = '';
+    const SMS_PHONE = '0819769810';
+    const MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent('190 หมู่ 13 ต.ลำพญากลาง อ.มวกเหล็ก จ.สระบุรี 30130');
+
+    const PHONES = [
+      { tel: '0819769810', show: '081-976-9810', note: 'ฝ่ายขายและบริการ' },
+      { tel: '0980986933', show: '098-098-6933', note: 'ฝ่ายขายและบริการ' }
+    ];
+    const PRODUCTS = {
+      '816': { name: 'ลำพญา 816', img: 'images/product-816.jpg', red: false, protein: 16, reg: '01 02 66 0030', note: 'สูตรมาตรฐาน สำหรับโคระยะอุ้มท้องและให้นม' },
+      'plus': { name: 'ลำพญาพลัส', img: 'images/product-plus.jpg', red: true, protein: 18, reg: '01 02 66 0029', note: 'สูตรโปรตีนสูง สำหรับโคระยะอุ้มท้องและให้นม' }
+    };
+    const INGREDIENTS = 'กากถั่วเหลือง ข้าวโพดป่น รำละเอียด กากปาล์ม กากเบียร์ มันสำปะหลัง กากน้ำตาล น้ำมันพืช ไดแคลเซียมฟอสเฟต เกลือ แร่ธาตุ และวิตามิน';
+
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+    const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+    const isDesktop = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+    $('#year').textContent = new Date().getFullYear();
+
+    /* ---------- SweetAlert2: ธีมกลาง + สำรองเมื่อโหลดไม่ได้ ---------- */
+    const base = {
+      confirmButtonColor: '#C62A2F', cancelButtonColor: '#55607A', denyButtonColor: '#14284B',
+      confirmButtonText: 'ตกลง', cancelButtonText: 'ปิด', denyButtonText: 'ไม่',
+      buttonsStyling: true, reverseButtons: false, focusConfirm: true,
+      showClass: { popup: 'swal2-show' }, hideClass: { popup: 'swal2-hide' }
+    };
+    function popup(o) {
+      if (window.Swal) return Swal.fire(Object.assign({}, base, o));
+      const t = String(o.text || o.html || '').replace(/<br\s*\/?>/g, '\n').replace(/<[^>]+>/g, ' ').replace(/\s+\n/g, '\n');
+      if (o.showCancelButton) return Promise.resolve({ isConfirmed: confirm((o.title || '') + '\n' + t) });
+      alert((o.title || '') + '\n' + t);
+      return Promise.resolve({ isConfirmed: true });
+    }
+    function toast(title, icon = 'success') {
+      if (!window.Swal) return;
+      Swal.fire({ toast: true, position: 'bottom', icon, title, showConfirmButton: false, timer: 2400, timerProgressBar: true,
+        didOpen: t => { t.addEventListener('mouseenter', Swal.stopTimer); t.addEventListener('mouseleave', Swal.resumeTimer); } });
+    }
+
+    /* ---------- เมนูมือถือ + เงาหัวเว็บ + เมนูที่กำลังอ่าน ---------- */
+    const header = $('#site-header');
+    const toggle = $('.nav-toggle', header);
+    const setNav = open => {
+      header.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'ปิดเมนู' : 'เปิดเมนู');
+    };
+    toggle.addEventListener('click', () => setNav(!header.classList.contains('nav-open')));
+    $$('.nav-links a', header).forEach(a => a.addEventListener('click', () => setNav(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') setNav(false); });
+    matchMedia('(min-width: 961px)').addEventListener('change', e => { if (e.matches) setNav(false); });
+    const onScroll = () => header.classList.toggle('is-scrolled', scrollY > 8);
+    addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    if ('IntersectionObserver' in window) {
+      const links = new Map($$('.nav-links a').map(a => [a.getAttribute('href').slice(1), a]));
+      const io = new IntersectionObserver(entries => entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        links.forEach(a => a.classList.remove('is-active'));
+        const a = links.get(en.target.id); if (a) a.classList.add('is-active');
+      }), { rootMargin: '-45% 0px -50% 0px' });
+      links.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+    }
+
+    /* ---------- ปุ่มโทร: มือถือโทรได้เลย / คอมพิวเตอร์แสดงเบอร์ให้คัดลอก ---------- */
+    function showCallDialog() {
+      const rows = PHONES.map(p => '<div class="row"><a href="tel:' + p.tel + '">' + p.show + '<small>' + p.note + '</small></a>' +
+        '<button type="button" class="btn btn-outline btn-sm" data-copy="' + p.show + '">คัดลอก</button></div>').join('');
+      popup({
+        title: 'โทรหาทีมงานลำพญาฟีดส์', html: '<div class="swal-call">' + rows + '</div>',
+        showConfirmButton: false, showCloseButton: true,
+        didOpen: el => $$('[data-copy]', el).forEach(b => b.addEventListener('click', () => copyText(b.dataset.copy, 'เบอร์โทร')))
+      });
+    }
+    document.addEventListener('click', e => {
+      const a = e.target.closest('a[href^="tel:"]');
+      if (!a || a.closest('.swal2-container') || !isDesktop() || !window.Swal) return;
+      e.preventDefault();
+      showCallDialog();
+    });
+
+    /* ---------- คัดลอก ---------- */
+    async function copyText(text, label) {
+      try {
+        if (navigator.clipboard && isSecureContext) await navigator.clipboard.writeText(text);
+        else {
+          const t = Object.assign(document.createElement('textarea'), { value: text });
+          t.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove();
+        }
+        if (window.Swal && Swal.isVisible() && !Swal.getPopup().classList.contains('swal2-toast')) {
+          const b = $$('[data-copy]', Swal.getPopup()).find(x => x.dataset.copy === text);
+          if (b) { b.textContent = 'คัดลอกแล้ว'; setTimeout(() => { b.textContent = 'คัดลอก'; }, 1800); }
+        } else toast('คัดลอก' + label + 'แล้ว');
+      } catch (_) {
+        popup({ icon: 'info', title: label, text: text });
+      }
+    }
+    $$('.js-copy').forEach(b => b.addEventListener('click', () => copyText(b.dataset.copy, b.dataset.label || '')));
+
+    /* ---------- นำทาง ---------- */
+    $$('.js-directions').forEach(b => b.addEventListener('click', async () => {
+      const r = await popup({
+        icon: 'question', title: 'นำทางมาโรงงานลำพญาฟีดส์',
+        html: '190 หมู่ 13 ถ.ปากช่อง–ลำสมพุง<br>ต.ลำพญากลาง อ.มวกเหล็ก จ.สระบุรี<br><br>แนะนำให้โทรนัดก่อนเข้ามารับสินค้า',
+        showCancelButton: true, confirmButtonText: 'เปิด Google Maps', cancelButtonText: 'ปิด'
+      });
+      if (r.isConfirmed) open(MAPS_URL, '_blank', 'noopener');
+    }));
+
+    /* ---------- LINE OA ---------- */
+    (() => {
+      const id = LINE_OA_ID.trim();
+      const url = !id ? '' : /^https?:\/\//.test(id) ? id : 'https://line.me/R/ti/p/' + encodeURIComponent(id.startsWith('@') ? id : '@' + id);
+      $$('.js-line').forEach(a => {
+        if (url) { a.href = url; return; }
+        a.removeAttribute('target');
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          popup({ icon: 'info', title: 'LINE OA กำลังเปิดให้บริการ', html: 'ระหว่างนี้ติดต่อทีมงานได้ที่<br><b>081-976-9810</b> หรือ <b>098-098-6933</b>', showCancelButton: true, confirmButtonText: 'โทรหาทีมงาน' })
+            .then(r => { if (r.isConfirmed) { if (isDesktop() && window.Swal) showCallDialog(); else location.href = 'tel:' + SMS_PHONE; } });
+        });
+      });
+    })();
+
+    /* ---------- เลือกสินค้า/บริการในแบบฟอร์มให้อัตโนมัติ ---------- */
+    function preselect(keyword, announce) {
+      const sel = $('#f-type');
+      const opt = [...sel.options].find(o => o.text.includes(keyword));
+      if (!opt) return;
+      sel.value = opt.value;
+      const field = sel.closest('.field');
+      field.classList.add('is-flash'); setTimeout(() => field.classList.remove('is-flash'), 1600);
+      if (announce) toast('เลือก "' + opt.text + '" ในแบบฟอร์มให้แล้ว', 'info');
+      setTimeout(() => $('#f-name').focus({ preventScroll: true }), 650);
+    }
+    $$('.js-request').forEach(a => a.addEventListener('click', () => preselect(a.dataset.request, true)));
+
+    /* ---------- รายละเอียดสินค้า ---------- */
+    function productHTML(p) {
+      const row = (k, q, v) => '<tr><td>' + k + '<small>' + q + '</small></td><td>' + v + '%</td></tr>';
+      return '<div class="swal-prod"><img src="' + p.img + '" alt="กระสอบ ' + esc(p.name) + '">' +
+        '<div><div class="label' + (p.red ? ' label-red' : '') + '"><div class="label-title">คุณภาพทางเคมี <span>ตามที่ระบุบนกระสอบ</span></div><table><tbody>' +
+        row('โปรตีน', 'ไม่น้อยกว่า', p.protein) + row('ไขมัน', 'ไม่น้อยกว่า', 2) + row('กากอาหาร', 'ไม่มากกว่า', 14) + row('ความชื้น', 'ไม่มากกว่า', 13) +
+        '</tbody></table><div class="label-foot"><span>น้ำหนักสุทธิ <b>50 กก.</b></span><span>เลขทะเบียน <b>' + p.reg + '</b></span></div></div>' +
+        '<p><b style="color:#16203A">ชนิด</b> อาหารสัตว์ผสมสำเร็จรูปชนิดผง</p><p><b style="color:#16203A">วัตถุดิบหลัก</b> ' + INGREDIENTS + '</p></div></div>';
+    }
+    $$('.js-detail').forEach(b => b.addEventListener('click', async () => {
+      const p = PRODUCTS[b.dataset.id];
+      if (!window.Swal) { location.hash = 'contact'; preselect(p.name); return; }
+      const r = await popup({
+        title: p.name, html: '<p style="margin-bottom:14px">' + p.note + '</p>' + productHTML(p), width: 'min(820px, 94vw)',
+        showCloseButton: true, showCancelButton: true,
+        confirmButtonText: 'สั่งซื้อ ' + p.name, confirmButtonColor: p.red ? '#C62A2F' : '#14284B', cancelButtonText: 'ปิด'
+      });
+      if (r.isConfirmed) { $('#contact').scrollIntoView({ behavior: 'smooth' }); preselect(p.name, true); }
+    }));
+
+    /* ---------- แกลเลอรี: ดูภาพขยาย เลื่อนซ้าย/ขวาได้ ---------- */
+    const SHOTS = $$('.gallery-grid .g').map(f => ({ src: $('img', f).getAttribute('src'), alt: $('img', f).alt, cap: $('figcaption', f).textContent }));
+    const ARROW = d => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="' + (d < 0 ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7') + '"/></svg>';
+    function lightbox(list, i) {
+      const n = list.length, s = list[(i + n) % n], idx = (i + n) % n;
+      if (!window.Swal) { open(s.src, '_blank'); return; }
+      const nav = n > 1 ? '<div class="lb-nav"><button type="button" data-step="-1" aria-label="ภาพก่อนหน้า">' + ARROW(-1) + '</button><button type="button" data-step="1" aria-label="ภาพถัดไป">' + ARROW(1) + '</button></div>' : '';
+      Swal.fire(Object.assign({}, base, {
+        html: '<figure class="lb"><img src="' + s.src + '" alt="' + esc(s.alt) + '"><div class="lb-bar"><div><figcaption>' + esc(s.cap) + '</figcaption>' +
+          (n > 1 ? '<span class="lb-count">ภาพที่ ' + (idx + 1) + ' จาก ' + n + '</span>' : '') + '</div>' + nav + '</div></figure>',
+        width: 'min(1040px, 96vw)', padding: '14px', showConfirmButton: false, showCloseButton: true,
+        showClass: { popup: '' }, hideClass: { popup: '' },
+        didOpen: el => {
+          $$('[data-step]', el).forEach(b => b.addEventListener('click', () => lightbox(list, idx + +b.dataset.step)));
+          el.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft') lightbox(list, idx - 1);
+            if (e.key === 'ArrowRight') lightbox(list, idx + 1);
+          });
+          let x0 = null;
+          el.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+          el.addEventListener('touchend', e => {
+            if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+            if (Math.abs(dx) > 50) lightbox(list, idx + (dx < 0 ? 1 : -1));
+          });
+        }
+      }));
+    }
+    $$('.gallery-grid .g button').forEach((b, i) => b.addEventListener('click', () => lightbox(SHOTS, i)));
+    $$('.js-zoom').forEach(b => b.addEventListener('click', () => lightbox([{ src: b.dataset.src, alt: $('img', b).alt, cap: b.dataset.caption }], 0)));
+
+    /* ---------- แบบฟอร์ม ---------- */
+    const form = $('#quote-form');
+    const submitBtn = $('#f-submit');
+    const labels = { name: 'ชื่อ หรือชื่อฟาร์ม', phone: 'เบอร์โทร', details: 'รายละเอียด' };
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const d = Object.fromEntries([...new FormData(form)].map(([k, v]) => [k, String(v).trim()]));
+      const missing = Object.keys(labels).filter(k => !d[k]);
+      if (missing.length) {
+        await popup({ icon: 'warning', title: 'กรอกข้อมูลยังไม่ครบ', html: 'กรุณากรอก <b>' + missing.map(k => labels[k]).join(', ') + '</b>', confirmButtonText: 'กรอกต่อ' });
+        form.elements[missing[0]].focus();
+        return;
+      }
+      if (d.phone.replace(/\D/g, '').length < 9) {
+        await popup({ icon: 'warning', title: 'เบอร์โทรไม่ครบ', text: 'เบอร์โทรต้องมีอย่างน้อย 9 หลัก กรุณาตรวจสอบอีกครั้ง', confirmButtonText: 'แก้ไขเบอร์' });
+        form.elements.phone.focus();
+        return;
+      }
+      const summary = '<div class="swal-summary"><div><b>ชื่อ:</b> ' + esc(d.name) + '</div><div><b>โทร:</b> ' + esc(d.phone) +
+        '</div><div><b>ต้องการ:</b> ' + esc(d.request_type) + '</div><div><b>รายละเอียด:</b> ' + esc(d.details) + '</div></div>';
+
+      if (!FORM_ENDPOINT) {
+        const r = await popup({
+          icon: 'question', title: 'ตรวจสอบข้อมูลก่อนส่ง', html: summary,
+          showCancelButton: true, showDenyButton: !!window.Swal,
+          confirmButtonText: 'ส่งทาง SMS', denyButtonText: 'โทรหาทีมงาน', cancelButtonText: 'แก้ไข'
+        });
+        if (r.isConfirmed) {
+          const text = 'ลำพญาฟีดส์\nชื่อ: ' + d.name + '\nโทร: ' + d.phone + '\nต้องการ: ' + d.request_type + '\nรายละเอียด: ' + d.details;
+          if (isDesktop()) {
+            await popup({ icon: 'info', title: 'ส่ง SMS จากมือถือ', html: 'คอมพิวเตอร์ส่ง SMS ไม่ได้ กดคัดลอกข้อความ แล้วส่งถึง <b>081-976-9810</b> ทางมือถือหรือ LINE', confirmButtonText: 'คัดลอกข้อความ', showCancelButton: true })
+              .then(x => { if (x.isConfirmed) copyText(text, 'ข้อความ'); });
+          } else {
+            location.href = 'sms:' + SMS_PHONE + '?&body=' + encodeURIComponent(text);
+            toast('เปิดแอปข้อความแล้ว กดส่งเพื่อยืนยัน', 'success');
+          }
+        } else if (r.isDenied) {
+          if (isDesktop()) showCallDialog(); else location.href = 'tel:' + SMS_PHONE;
+        }
+        return;
+      }
+
+      submitBtn.disabled = true;
+      if (window.Swal) Swal.fire(Object.assign({}, base, { title: 'กำลังส่งข้อมูล', allowOutsideClick: false, didOpen: () => Swal.showLoading() }));
+      try {
+        const res = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify(d) });
+        if (!res.ok) throw new Error(res.status);
+        form.reset();
+        await popup({ icon: 'success', title: 'ส่งข้อมูลแล้ว', html: 'ทีมงานจะโทรกลับตามเบอร์ที่ให้ไว้' + summary });
+      } catch (_) {
+        const r = await popup({ icon: 'error', title: 'ส่งข้อมูลไม่สำเร็จ', text: 'ระบบส่งข้อมูลขัดข้อง โทรหาทีมงานโดยตรงได้ที่ 081-976-9810', showCancelButton: true, confirmButtonText: 'โทรหาทีมงาน' });
+        if (r.isConfirmed) { if (isDesktop()) showCallDialog(); else location.href = 'tel:' + SMS_PHONE; }
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+</script>
+</body>
+</html>

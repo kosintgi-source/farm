@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ลำพญาฟีดส์">
+  <circle cx="32" cy="32" r="31" fill="#FFFFFF"/>
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#C8282E" stroke-width="2.5"/>
+  <!-- horns -->
+  <path d="M19 21 C14 19 11 14 12 10 C15 14 19 15 23 16Z" fill="#C8282E"/>
+  <path d="M45 21 C50 19 53 14 52 10 C49 14 45 15 41 16Z" fill="#C8282E"/>
+  <!-- ears -->
+  <path d="M20 22 C14 22 10 25 9 28 C13 30 18 29 22 27Z" fill="#C8282E"/>
+  <path d="M44 22 C50 22 54 25 55 28 C51 30 46 29 42 27Z" fill="#C8282E"/>
+  <!-- head -->
+  <path d="M21 18 C24 15 40 15 43 18 C45 22 44 30 42 38 C41 43 39 47 32 47 C25 47 23 43 22 38 C20 30 19 22 21 18Z" fill="#C8282E"/>
+  <!-- blaze -->
+  <path d="M29 19 C31 18 33 18 35 19 L34 33 L30 33Z" fill="#FFFFFF"/>
+  <!-- eyes -->
+  <circle cx="26" cy="27" r="1.8" fill="#FFFFFF"/><circle cx="38" cy="27" r="1.8" fill="#FFFFFF"/>
+  <!-- muzzle -->
+  <ellipse cx="32" cy="45" rx="9" ry="6" fill="#FFFFFF"/>
+  <ellipse cx="28.5" cy="45" rx="1.6" ry="2" fill="#C8282E"/><ellipse cx="35.5" cy="45" rx="1.6" ry="2" fill="#C8282E"/>
+  <!-- wheat sprig -->
+  <path d="M47 50 C49 46 51 44 54 43" stroke="#14284B" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+  <ellipse cx="50.5" cy="45.5" rx="1.2" ry="2.2" transform="rotate(40 50.5 45.5)" fill="#14284B"/>
+  <ellipse cx="53" cy="43.6" rx="1.1" ry="2" transform="rotate(55 53 43.6)" fill="#14284B"/>
+</svg>
